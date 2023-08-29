@@ -1,0 +1,77 @@
+.job{
+    padding: 1rem;
+}
+
+.title-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.job-title{
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.id span{
+    font-weight: bold;
+}
+
+.label{
+    color: rgb(73, 73, 73);
+    margin-right: 5px;
+}
+
+.more-buttons{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.more{
+    text-align: end;
+    color: #3373ff;
+}
+
+.more:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.info{
+    display: none;
+}
+
+.info ul{
+    list-style: none;
+    margin-top: 1rem;
+    padding: 0;
+}
+
+.info ul li{
+    margin-bottom: 0.4rem;
+}
+
+.select-map{
+    color: #239B56;
+}
+
+.select-map:hover{
+    color: #105f33;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.info-block{
+    display: block;
+}
+
+.job-actions{
+    display: flex;
+}
+
+.job-actions span{
+    margin-left: 14px;
+}

@@ -1,0 +1,47 @@
+.login-page{
+    height: 100vh;
+    width: 100%;
+    background-color: #edf0f3;
+    padding: 100px;
+}
+
+.login-page form{   
+    width: 500px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.login-page form h2{
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 1.8rem;
+}
+
+.login-page form input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    outline: 0;
+    border: 1px solid darkgray;
+}
+
+.login-page form button{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #3498DB;
+    color: white;
+    font-weight: bold;
+    border: 0;
+    font-size: 1.1rem;
+}
+
+.login-page form button:hover{
+    background-color: #2b8ac9;
+    cursor: pointer;
+}

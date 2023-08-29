@@ -1,0 +1,96 @@
+.delete-modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.delete-modal-content {
+    background-color: #fefefe;
+    padding: 40px;
+    width: 700px;
+    border-radius: 2px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.deleteButton:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #CB4335;
+}
+
+.actionButton{
+    font-weight: bold;
+    border-radius: 3px;
+    display: block;
+    padding: 6px;
+    width: 95px;
+    text-align: center;
+}
+
+.deleteButton{
+    color: #CB4335;
+    border: 2px solid #CB4335;
+}
+
+.editButton{
+    color: #273746;
+    border: 2px solid #273746;
+}
+.editButton:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #273746;
+}
+
+.delete-modal .buttons{
+    margin-top: 3.5rem ;
+}
+
+.delete-modal .buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-modal .buttons button{
+    padding: 8px;
+    width: 110px;
+    font-weight: bold;
+    font-size: 1rem;
+    
+    border-radius: 3px;
+}
+
+.delete-modal .buttons .cancel-button{
+    color: #CB4335;
+    border: 3px solid #CB4335;
+    background-color: white;
+    
+}
+
+.delete-modal .buttons .cancel-button:hover{
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.confirm-delete-button{
+    background-color: #CB4335;
+    border: 3px solid #CB4335;
+    color: white;
+}
+
+.confirm-delete-button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    cursor: pointer;
+    background-color: #b42c1d;
+    border: 3px solid #b42c1d;
+}

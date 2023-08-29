@@ -1,0 +1,26 @@
+.content h1{
+    display: inline-block;
+}
+
+.top{
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+hr{
+    height: 1px;
+    border: 0;
+    background-color: #afafaf;
+}
+
+.vehicle-status-active{
+    font-weight: bold;
+    color: #17A589;
+}
+
+.vehicle-status-inactive{
+    font-weight: bold;
+    color: #E74C3C;
+}

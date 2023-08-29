@@ -1,0 +1,297 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.planning-page{
+    height: 100vh;
+    padding-top: 15px;
+    background-color: #1C2833;
+    margin: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+.close-planning{
+    filter: invert(100%);
+    position: absolute;
+    right: 35px;
+    cursor: pointer;
+}
+
+.planning-title{
+    margin-left: 15px;
+    padding: 0;
+    font-size: 35px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.planning-content{
+    width: 100%;
+    height: calc(100vh - 105px);
+    display: flex;
+}
+
+.planning-data{
+    width: 30%;
+    height: 100%;
+    background-color: #1C2833;
+    padding: 10px;
+    padding-top: 15px
+}
+
+.date-tabs{
+    display: flex;
+    overflow-x: scroll;
+}
+
+.date-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.date-tabs label{
+    display: block;
+    background-color: rgb(206, 206, 206);
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid darkgrey;
+    border-left: none;
+    padding: 7px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #37414b;
+    cursor: pointer;
+}
+
+.date-tabs label:hover{
+    background-color: #e9e9e9;
+}
+
+.date-tabs input{
+    display: none;
+}
+
+.date-tab-selected{
+    background-color: white !important;
+    color: #000 !important;
+    border-bottom: 1px solid #fff !important;
+}
+
+.vehicles{
+    height: calc(40% - 30px);
+    background-color: white;
+    padding-top: 10px;
+}
+
+.vehicles input{
+    display: none;
+}
+
+.vehicle{
+    display: block;
+    color: #566573;
+    font-weight: bold;
+    width: 100%;
+    padding: 8px;
+    border-bottom: 1px #778897 solid;
+    cursor: pointer;
+}
+
+.vehicle:hover{
+    background-color: #dddddd;
+}
+
+.vehicle-tab-selected{
+    background-color: #dddddd !important;
+    color: #000 !important;
+
+}
+
+.route{
+    height: 60%;
+    background-color: #1C2833;
+}
+
+.route-tabs{
+    display: flex;
+    justify-content: center;
+}
+
+.route-tabs input{
+    display: none;
+}
+
+.route-tabs input:checked{
+    background-color: white;
+}
+
+.route-tabs label{
+    display: block;
+    text-align: center;
+    width: 33.33%;
+    padding: 10px 0;
+    background-color: #566573;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.info-tab-selected{
+    background-color: white !important;
+    color: #000 !important;
+}
+
+.route-tabs label:hover{
+    background-color: #778897;
+}
+
+.route-data{
+    height: calc(100% - 48px);
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 15px;
+}
+
+.route-data div{
+    color: #000;
+}
+
+#info-container{
+    display: none;
+}
+
+#workers-container{
+    display: none;
+}
+
+#workers-container ul{
+    margin: 0;
+    margin-top: 15px;
+    padding-left: 17px;
+}
+
+#jobs-container{
+    display: none;    
+    margin-top: 15px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 15px;
+}
+
+.depot{
+    width: 100%;
+    height: 70px;
+    margin-left: 15px;
+    display: flex;
+}
+
+.job-element{
+    width: 100%;
+    height: 125px;
+    margin-left: 15px;
+    display: flex;   
+}
+
+.depot-draw{
+    width: 25px;
+}
+
+.start-depot-info{
+    margin-top: 4px;
+    margin-left: 15px;
+}
+
+.end-depot-info{
+    margin-top: 48px;
+    margin-left: 15px;
+}
+
+.job-draw{
+    width: 25px;
+}
+
+.job-info{
+    margin-left: 15px;
+}
+
+.job-start{
+    margin-bottom: 7px;
+    margin-top: 20px;
+}
+
+.job-end{
+    margin-top: 7px;
+}
+
+.job-title{
+    font-weight: bold;
+}
+
+.depot-icon{
+    width: 25px;
+    height: 25px;
+    background-color: #3498DB;
+    border-radius: 100%;
+}
+
+.job-icon{
+    width: 19px;
+    height: 19px;
+    background-color: #3498DB;
+    border-radius: 100%;
+    margin: auto;
+}
+
+.job-line{
+    height: 53px;
+    width: 6px;
+    background-color: #3498DB;
+    margin: auto;
+}
+
+.depot-line{
+    width: 6px;
+    height: 45px;
+    background-color: #3498DB;
+    margin: auto;
+}
+
+.start{
+    margin-left: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.end{
+    margin-left: 15px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.planning-map{
+    position: relative;
+    width: 70%;
+    height: 100%;
+}
+
+.planning-map .map{
+    width: 100%;
+    height: calc(100% - 48px);
+    background-color: blue;
+    position: absolute;
+    bottom: 0;
+    border-bottom: 9px #1C2833 solid;
+    border-right: 9px #1C2833 solid;
+}
+
+.leaflet-routing-alternatives-container{
+    display: none;
+}
+
+.planning-map .map {
+    background-color: #ddd;
+}

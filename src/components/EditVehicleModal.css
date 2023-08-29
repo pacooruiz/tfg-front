@@ -1,0 +1,18 @@
+.change-status input{
+    width: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.change-status label{
+    margin: 0 !important;
+    margin-left: 7px !important;
+    margin-right: 35px !important;
+    padding: 0 !important;
+    width: auto !important;
+}
+
+.change-status{
+    display: flex;
+    align-items: center;
+}
