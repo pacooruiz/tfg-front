@@ -47,7 +47,22 @@ function Vehiculos(){
 
     function editVehicle(vehicle){
 
-        setVehicles([...vehicles.filter(v => v.id !== vehicle.id), vehicle])
+        axios.put('http://localhost:8080/vehicles', {
+            depot: {
+                id: vehicle.depot.id
+            },
+            fixedCost: vehicle.fixedCost,
+            id: vehicle.id,
+            maxLoad: vehicle.maxLoad,
+            seats: vehicle.seats,
+            variableCost: vehicle.variableCost,
+            active: (vehicle.status === 'a')
+        }).then(res => {
+            if(res.status === 200){
+                setVehicles([...vehicles.filter(v => v.id !== vehicle.id), vehicle])
+            }
+        })
+
     }
 
     return (

@@ -28,7 +28,6 @@ function Job(props){
                 <div className='title-bar'>
                     <h3 className='job-title'>{props.job.title}</h3>
                     <div className='job-actions'>
-                        {/*}<div className='editButton actionButton' onClick={() => props.editFunction(props.job)}>Editar</div>*/}
                         <DeleteModal message={"el trabajo \""+ props.job.title +"\""} idToDelete={props.job.id} deleteFunction={props.deleteFunction}></DeleteModal>
                     </div>
                 </div>
@@ -41,6 +40,14 @@ function Job(props){
                         <li><span className='label'>Número trabajadores requeridos:</span> {props.job.workersNeeded}</li>
                         <li><span className='label'>Carga necesaria:</span> {props.job.loadNeeded} kg</li>
                         <li><span className='label'>Descripción:</span> {props.job.description}</li>
+                    </ul>
+                    <p className='planned'><span className='label'>Planificado en:</span></p>
+                    <ul className='plannings'>
+                    {props.job.plannings.map((p) => {
+                        return(
+                            <li>- {p}</li>
+                        )
+                    })}
                     </ul>
                 </div>
                 <div className='more-buttons'>

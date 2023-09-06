@@ -11,6 +11,8 @@ function CreateRouteForm({closeForm}){
     const [jobs, setJobs] = useState([])
     const [vehicles, setVehicles] = useState([])
 
+    const [errors, setErrors] = useState([])
+
     const [routeWorkers, setRouteWorkers] = useState([]);
     const [routeJobs, setRouteJobs] = useState([]);
     const [routeVehicles, setRouteVehicles] = useState([]);
@@ -36,13 +38,48 @@ function CreateRouteForm({closeForm}){
 
     function createRouteRequest(){
 
+        if(routeStartDate == null){
+            alert("Debe especificar una fecha de inicio")
+            return
+        }
+
+        if(routeEndDate == null){
+            alert("Debe especificar una fecha de finalización")
+            return
+        }
+
+        if(routeJobs.length === 0){
+            alert("Debe seleccionar al menos un trabajo")
+            return
+        }
+
+        if(routeVehicles.length === 0){
+            alert("Debe seleccionar al menos un vehículo")
+            return
+        }
+
+        if(routeWorkers.length === 0){
+            alert("Debe seleccionar al menos un trabajador")
+            return
+        }
+
         var time = document.getElementById("min").value * 60 
         time = time + parseInt(document.getElementById("sec").value)
 
-        document.getElementById("waiting").style.display="block";
+        if(isNaN(time) || time === 0){
+            alert("Debe especificar un tiempo de cálculo")
+            return
+        }
 
         var currentDate = Date.parse(routeStartDate)
         var endDate = Date.parse(routeEndDate)
+
+        if(currentDate > endDate){
+            alert("La fecha de finalización debe ser igual o superior a la fecha de inicio")
+            return
+        }
+
+        document.getElementById("waiting").style.display="block";
 
         var route = {
             title: routeTitle,
@@ -59,8 +96,18 @@ function CreateRouteForm({closeForm}){
             if(res.status === 200){
                 nav("/planificacion/" + res.data.id)
             }
-            //document.getElementById("waiting").style.display="none";
-            //closeForm()
+            
+
+        }).catch(error => {
+            if(error.response.status === 500){
+                document.getElementById("waiting").style.display="none";
+                alert("Error interno")
+            }
+            else if(error.response.status === 400){
+                document.getElementById("waiting").style.display="none";
+                document.getElementById("errors").style.display="block";
+                setErrors(error.response.data.errors)
+            }
         })
         
         
@@ -236,7 +283,7 @@ function CreateRouteForm({closeForm}){
                             <tr>
                                 <td><input type="checkbox" id={j.id} className="select" onChange={(e) => handleJob(e)}></input></td>
                                 <td>{j.title}</td>
-                                <td>NO</td>
+                                <td>{(j.plannings.length === 0) ? "NO" : "SI" }</td>
                             </tr>
                                 )
                             })} 
@@ -259,6 +306,20 @@ function CreateRouteForm({closeForm}){
                 </div>
             
             <p>Calculando rutas</p>
+            </div>
+
+            <div id="errors">
+                <h2>No se ha podido generar la planificación</h2>
+                <h3>Se han encontrado los siguientes errores</h3>
+                <ul>
+                    {errors.map((e) => {
+                        return(
+                            <li>{e}</li>
+                        )
+                    })}
+
+                </ul>
+                <button onClick={()=>{window.location.reload()}}>Aceptar</button>
             </div>
 
         </div>

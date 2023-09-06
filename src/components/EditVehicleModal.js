@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../components/DeleteModal.css'
 import '../components/EditVehicleModal.css'
+import axios from 'axios';
 
 function EditVehicleModal(props){
 
@@ -12,11 +13,31 @@ function EditVehicleModal(props){
 
     const [data, setData] = useState(props.vehicle)
 
+    function activateDesactivate(e){
+
+        const newdata={...data}
+        if(e.target.id === 'active' && e.target.checked){
+            newdata.status = 'a'
+        }
+        else if(e.target.id === 'inactive' && e.target.checked){
+            newdata.status = 'b'
+        }
+
+        setData(newdata)
+    }
+
     function handle(e){
         const newdata={...data}
         newdata[e.target.id] = e.target.value
         setData(newdata)
     }
+
+    const [depots, setDepots] = useState([])
+
+    useEffect(function(){
+        axios.get('http://localhost:8080/depots').then(res => 
+        setDepots(res.data))
+    }, [])
 
     return (
         (
@@ -33,9 +54,12 @@ function EditVehicleModal(props){
                         </div>
                         <div>
                             <label>Depósito</label>
-                            <select>
-                                <option>Córdoba</option>
-                                <option>Cordoba sur</option>
+                            <select onChange={(e) => handle(e)} id="depot">
+                                {depots.map((d) => {
+                                    return(
+                                        <option value={d.id}>{d.name}</option>
+                                    )
+                                })}
                             </select>
                         </div>
                         <div>
@@ -58,10 +82,10 @@ function EditVehicleModal(props){
                             <label>Estado</label>
                             <div className='change-status'>
                                 
-                                <input type='radio' name='status' id='active'></input>
+                                <input type='radio' name='status' id='active' defaultChecked={data.status==='a'} onChange={(e) => activateDesactivate(e)}></input>
                                 <label for='active'>Activo</label>
                                 
-                                <input type='radio' name='status' id='inactive'></input>
+                                <input type='radio' name='status' id='inactive' defaultChecked={data.status!=='a'} onChange={(e) => activateDesactivate(e)}></input>
                                 <label for='inactive'>Inactivo</label>
                             </div>
                         </div>

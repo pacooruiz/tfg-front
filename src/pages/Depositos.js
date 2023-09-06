@@ -12,7 +12,7 @@ import { useRef } from "react"
 
 function Depositos(){
 
-    const lastClickedLocation = useRef({lat: null, lng: null})
+    const lastClickedLocation = useRef({latitude: null, longitude: null})
     var marker = null;
     var map;
 
@@ -56,8 +56,45 @@ function Depositos(){
 
     const [depots, setDepots] = useState([])
 
-    function deleteDepot(){
+    function deleteDepot(depotId){
+        axios.delete('http://localhost:8080/depots?id=' + depotId).then(res => {
+            if(res.status === 200){
+                setDepots(depots.filter(d => d.id !== depotId))
+            }
+        })
+    }
 
+    function addDepot(){
+
+        const name = document.getElementById('name').value
+        const latitude = lastClickedLocation.current.latitude
+        const longitude = lastClickedLocation.current.longitude
+
+        if(latitude===null || longitude===null){
+            alert('Debe seleccionar una localización')
+            return
+        }
+
+        console.log(lastClickedLocation.current)
+
+        if(name === ''){
+            alert('Debe añadir un nombre')
+            return
+        }
+
+        var newDepot = {
+            name: name,
+            latitude: latitude,
+            longitude: longitude
+        }
+
+        axios.post("http://localhost:8080/depots", newDepot)
+        .then(res => {
+
+            if(res.status === 200){
+                window.location.reload()
+            }            
+        })
     }
 
     return(
@@ -80,12 +117,12 @@ function Depositos(){
                         <tbody>
                             <tr id="add-depot" style={{display:"none"}}>
                                 <td>
-                                    <input placeholder="Nombre"></input>Selecciona la localización en el mapa
+                                    <input placeholder="Nombre" id="name"></input>Selecciona la localización en el mapa
                                 </td>
                                 <td>
                                     <div className="actions">                                        
                                         <div>
-                                            <span className='editButton actionButton'>Añadir</span>
+                                            <span className='editButton actionButton' onClick={() => {addDepot()}}>Añadir</span>
                                         </div> 
                                     </div>           
                                 </td>
